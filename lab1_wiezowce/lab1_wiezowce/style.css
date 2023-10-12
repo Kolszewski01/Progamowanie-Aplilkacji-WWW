@@ -1,0 +1,124 @@
+#main{
+    width: 1920px;
+    height: 1080px;
+    background-image: url('img/tlo.png')
+}
+
+#divup{
+    width: 920px;
+    height: 140px;
+    background-color: #3f3f3f;
+    position: static;
+    margin-left: 500px;
+    text-align: center;
+    line-height: 110px;
+    text-shadow: 0px 1px 8px rgba(243, 237, 237, 0.524);
+    color:aliceblue
+}
+
+#zegarek{
+    width: 100px;
+    height: 50px;
+    background-color:red;
+}
+
+#divcenter{
+    width: 920px;
+    height: 650px;
+    margin-left: 500px;
+}
+#divcenter2{
+    width: 920px;
+    height: 650px;
+    margin-left: 500px;
+    background-color: #545454;
+    text-align: center;
+
+}
+
+#divleft{
+    float:left;
+    width: 220px;
+    height: 650px;
+    background-color: #545454;
+    color:white;
+    text-align: center;
+    
+}
+
+#divright{
+    float: right;
+    width: 700px;
+    height: 650px;
+    background-color: #6a6a6a;
+    color:white;
+    text-align: center;
+
+}
+
+#divfooter{
+    position: static;
+    margin-left: 500px;
+    width: 920px;
+    height: 160px;
+    background-color: #808080;
+    text-align: center;
+
+}
+
+.indexopis{
+font-size: 19px;
+
+}
+
+.sign{
+    float: right;
+    padding: 10px;
+    
+}
+.przycisk {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Kolor tła przycisku */
+    color: #fff; /* Kolor tekstu przycisku */
+    text-decoration: none; /* Usunięcie podkreślenia linku */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.przycisk_dom{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #09399a; /* Kolor tła przycisku */
+    color: #fff; /* Kolor tekstu przycisku */
+    text-decoration: none; /* Usunięcie podkreślenia linku */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.zdjecia img {
+    display: inline-flex;
+    margin: 5px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    
+  }
+
+  .h1 {
+    margin-top: 0;
+    padding-top: 10px;
+    color:white;
+    text-shadow: 0px 1px 8px rgba(243, 237, 237, 0.524);
+    
+  }
+
+.tekstp{
+    font-size: larger;
+    color: #000000;
+    background-color: #fff;
+
+}
