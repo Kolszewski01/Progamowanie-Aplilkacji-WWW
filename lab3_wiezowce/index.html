@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" 
+    <script src="timedata.js" type="text/javascript"></script>
+    <script src="kolorujtlo.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div id="divup">
+            <h1>NAJWYŻSZE BUDOWLE ŚWIATA</h1>
+        </div>
+
+      
+        <div id="divcenter">
+            <div id="divleft">
+                <h3> Skontaktu się z nami!</h3>
+                
+                <form action="mailto:nbskontakt@gmail.com" method="post" enctype="text/plain">
+                <br>Podaj adres e-mail:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="wiadomosc">Wiadomość:</label><br>
+                <textarea id="wiadomosc" name="wiadomosc" rows="5" cols="25" required></textarea><br><br>
+                
+                <input type="submit" value="Wyślij">
+
+                </form>
+
+            </div>
+
+
+            <div id="divright">
+                <h2>
+                    Witamy Cię na naszej fascynującej stronie internetowej,
+                     poświęconej najwyższym budynkom na świecie! 
+                </h2>
+                <br><br><br>
+                <span class="indexopis"> Jeśli jesteś miłośnikiem architektury, inżynierii i 
+                    oszałamiających osiągnięć ludzkiej pomysłowości,
+                    to jesteś we właściwym miejscu.<br><br>
+
+                    Nasza witryna jest prawdziwym źródłem wiedzy i inspiracji.
+                    Przeniesiemy Cię w podróż do niezwykłych miejsc,
+                    gdzie gigantyczne wieżowce przyciągają uwagę i budzą zachwyt. 
+                    Odkryjesz historię, innowacje i wyzwania,
+                    które towarzyszą konstrukcji tych monumentalnych budynków. <br><br>
+                    
+                    Prezentujemy Ci wieże, które wznoszą się na niebie i przesuwają granice tego,
+                     co jest możliwe. Dlaczego Burj Khalifa w Dubaju jest tak wyjątkowy? 
+                     Jak Shanghai Tower w Szanghaju zmienia nasze postrzeganie architektury?
+                      Odpowiedzi na te pytania i wiele innych znajdziesz na naszej stronie.</span>
+
+
+                      <div id="czas"></div>
+                      <div id="data"></div>
+                      
+
+                <Form method="POST" NAME="background">
+                    <INPUT TYPE="button" value="Żółty" onclick="changeBackground('#FFF000')">
+                    <INPUT TYPE="button" value="Czarny" onclick="changeBackground('#000000')">
+                    <INPUT TYPE="button" value="biały" onclick="changeBackground('#FFFFFF')">
+                    <INPUT TYPE="button" value="zielony" onclick="changeBackground('#00F000')">
+                    <INPUT TYPE="button" value="niebieski" onclick="changeBackground('#0000FF')">
+                    <INPUT TYPE="button" value="pomarańczowy" onclick="changeBackground('#FF8000')">
+                    <INPUT TYPE="button" value="szary" onclick="changeBackground('#c0c0c0')">
+                    <INPUT TYPE="button" value="czerwony" onclick="changeBackground('#FF0000')">
+        
+                </Form>
+
+      
+
+                <div id="animacjatestowa1" class="test-block">kliknij, a sie powieksze</div>
+	
+                <script>
+                    $("#animacjatestowa1").on("click", function(){
+                    $(this).animate({
+                    width: "500px",
+                    opacity: 0.4,
+                    fontsize: "3em",
+                    borderwidth: "10px"
+                    }, 1500);
+                    });
+                </script>
+
+                <div id="animacjaTestowa2" class="test-block">
+                    Najedz kursorem, a sie powieksze
+                    </div>
+                    <script>
+                    $("#animacjaTestowa2").on({
+                    "mouseover" : function(){
+                    $(this).animate({
+                    width: 300
+                    }, 800);
+                    },
+                    "mouseout" : function(){
+                        $(this).animate({
+                    width: 200
+                    }, 800);
+                    }
+                    });
+                    </script>
+
+                    
+                    <div id="animacjaTestowa3" class="test-block">
+                    Klikaj, abym urósł
+                    </div>
+                    <script>
+                    $("#animacjaTestowa3").on("click", function(){
+                        if (!$(this).is(":animated")) {
+                            $(this).animate({
+                            width: "+=" + 50,
+                            height: "+=" + 10,
+                            opacity: "-=" + 0.1,
+                            duration: 3000 
+                        });
+                    }
+                    });
+                    </script>
+
+
+
+            </div>
+
+        </div>
+        <div id="divfooter">
+            <a href="burdz.html" class="przycisk strona1">Burdż Chalifa</a>
+            <a href="st.html" class="przycisk strona2">Shanghai Tower</a>
+            <a href="ab.html" class="przycisk strona1">Abradż al-Bajt </a>
+            <a href="pfc.html" class="przycisk strona2">Ping An Finance Center</a>
+            <a href="lwt.html" class="przycisk strona1">Lotte World Tower</a>
+
+            <div id="razdwa"></div>
+            <div id="data"> </div>
+
+
+            <br><br><br><br><br><br><br><br>
+            <marquee BEHAVIOR=ALTERNATE  class="sign">by Olszewski Konrad  nr indexu:164450 </marquee>
+          
+            <div id="razdwa"></div>
+            <div id="data"></div>
+            
+
+        </div>
+    
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
