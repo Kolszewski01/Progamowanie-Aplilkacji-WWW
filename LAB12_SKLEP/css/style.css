@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.nav {
+    background: #007bff;
+    padding: 100px 0;
+}
+
+.nav nav a.przycisk {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.kategorie, .koszyk {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.kategorie h2, .koszyk h2 {
+    color: #007bff;
+}
+
+.main-categories, .sub-categories {
+    list-style: none;
+    padding: 0;
+}
+
+.main-categories > li, .sub-categories > li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.sub-categories {
+    padding-left: 20px;
+}
+
+.category, .subcategory {
+    font-weight: bold;
+}
+
+.produkt {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.produkt img {
+    max-width: 100px;
+    max-height: 100px;
+    float: left;
+    margin-right: 20px;
+}
+
+.produkt p {
+    margin: 5px 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
