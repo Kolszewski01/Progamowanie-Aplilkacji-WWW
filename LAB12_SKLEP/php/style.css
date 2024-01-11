@@ -76,7 +76,7 @@ body {
 }
 
 .produkt-details {
-    flex: 1; /* Zajmuje pozostałą przestrzeń */
+    flex: 1;
 }
 
 .produkt p, .produkt-details {
@@ -85,8 +85,8 @@ body {
 }
 
 .produkt .spec {
-    display: inline-block; /* Pozwala elementom być obok siebie */
-    margin-right: 20px; /* Dodaje przestrzeń między elementami */
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .produkt a {
@@ -103,11 +103,9 @@ body {
     margin-top: 10px;
 }
 
-/* Dodatkowy styl, jeśli chcesz, aby wszystkie teksty były wyrównane do lewej */
 .produkt > * {
     text-align: left;
 }
-
 
 .produkt a:hover {
     background: #0056b3;
@@ -116,7 +114,6 @@ body {
 a {
     color: #007bff;
     text-decoration: none;
-
 }
 
 a:hover {

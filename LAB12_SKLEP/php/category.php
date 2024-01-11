@@ -73,10 +73,6 @@ class Kategoria
         return $select;
     }
 
-    public static function usunKategorie()
-    {
-        // Kod do usuwania kategorii
-    }
 
     public static function dodajKategorie(array $dane)
     {

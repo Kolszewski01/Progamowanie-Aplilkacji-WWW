@@ -1,16 +1,26 @@
 <?php
 function dodajDoKoszyka($idProduktu, $nazwa, $ilosc, $cena, $vat) {
+    $mysqli = CFG::getInstance();
+
+    $stmt = $mysqli->prepare("SELECT ilosc_dostepnych_sztuk, status_dostepnosci FROM produkty WHERE id = ?");
+    $stmt->bind_param("i", $idProduktu);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($produkt = $result->fetch_assoc()) {
+        if ($produkt['status_dostepnosci'] != 'Dostepny' || $produkt['ilosc_dostepnych_sztuk'] < $ilosc) {
+            echo "Produkt niedostępny lub nie ma wystarczającej ilości.";
+            return;
+        }
+    }
+
     $cenaBrutto = $cena + ($cena * $vat / 100);
     if (isset($_SESSION['koszyk'][$idProduktu])) {
-        // Aktualizacja istniejącego wpisu produktu w koszyku.
         $_SESSION['koszyk'][$idProduktu]['ilosc'] += $ilosc;
-        // Możesz tu również dodać logikę, która sprawdzi maksymalną dostępną ilość, jeśli jest taka potrzeba.
     } else {
-        // Dodanie nowego produktu do koszyka.
         $_SESSION['koszyk'][$idProduktu] = array(
-            'nazwa' => $nazwa, // Nazwa produktu.
-            'ilosc' => $ilosc, // Ilość dodawanego produktu.
-            'cena_brutto' => $cenaBrutto // Cena brutto jednostkowa.
+            'nazwa' => $nazwa,
+            'ilosc' => $ilosc,
+            'cena_brutto' => $cenaBrutto
         );
     }
 }
@@ -20,6 +30,7 @@ function usunZKoszyka($idProduktu) {
         unset($_SESSION['koszyk'][$idProduktu]);
     }
 }
+
 function pokazKoszyk() {
     $total = 0;
     if (isset($_SESSION['koszyk']) && count($_SESSION['koszyk']) > 0) {
@@ -31,6 +42,7 @@ function pokazKoszyk() {
             echo "<button type='button' onclick='zmienIlosc(\"$idProduktu\", -1)'>-</button>";
             echo "<input type='number' name='ilosc[$idProduktu]' value='{$produkt['ilosc']}' min='1' id='ilosc_$idProduktu' data-cena='{$produkt['cena_brutto']}' onchange='updateTotal()'>";
             echo "<button type='button' onclick='zmienIlosc(\"$idProduktu\", 1)'>+</button>";
+            echo "<a href='removefromcart.php?id=$idProduktu'>Usuń</a>";
             echo " Cena: $subtotal zł</div>";
         }
         echo "<div>Razem: <span id='total'>$total</span> zł</div>";
@@ -40,6 +52,3 @@ function pokazKoszyk() {
         echo 'Koszyk jest pusty.';
     }
 }
-
-
-
