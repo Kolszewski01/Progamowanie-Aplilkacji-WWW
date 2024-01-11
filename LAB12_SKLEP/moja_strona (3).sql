@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 04:28 PM
+-- Generation Time: Sty 11, 2024 at 03:09 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `moja_strona`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `kategorie`
+--
+
+CREATE TABLE `kategorie` (
+  `id` int(11) NOT NULL,
+  `matka` int(11) NOT NULL DEFAULT 0,
+  `nazwa` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kategorie`
+--
+
+INSERT INTO `kategorie` (`id`, `matka`, `nazwa`) VALUES
+(1, 0, 'Laptopy'),
+(2, 0, 'Smartfony i smartwatche'),
+(3, 0, 'Dom i ogród'),
+(4, 1, 'Akcesoria do Laptopów'),
+(5, 1, 'Laptopy'),
+(6, 2, 'Smartfony'),
+(7, 2, 'Smartwatche i zegarki'),
+(8, 3, 'Narzędzia'),
+(9, 3, 'Klucze');
 
 -- --------------------------------------------------------
 
@@ -49,6 +76,46 @@ INSERT INTO `page_list` (`id`, `page_title`, `page_content`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `produkty`
+--
+
+CREATE TABLE `produkty` (
+  `id` int(11) NOT NULL,
+  `tytul` varchar(255) DEFAULT NULL,
+  `opis` text NOT NULL,
+  `data_utworzenia` date NOT NULL DEFAULT current_timestamp(),
+  `data_modyfikacji` date NOT NULL DEFAULT current_timestamp(),
+  `data_wygasniecia` date DEFAULT NULL,
+  `cena_netto` float NOT NULL,
+  `podatek_vat` float NOT NULL DEFAULT 1.23,
+  `ilosc_dostepnych_sztuk` int(11) DEFAULT NULL,
+  `status_dostepnosci` varchar(255) DEFAULT NULL,
+  `kategoria` int(11) NOT NULL,
+  `gabaryt_produktu` varchar(255) DEFAULT NULL,
+  `zdjecie` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `produkty`
+--
+
+INSERT INTO `produkty` (`id`, `tytul`, `opis`, `data_utworzenia`, `data_modyfikacji`, `data_wygasniecia`, `cena_netto`, `podatek_vat`, `ilosc_dostepnych_sztuk`, `status_dostepnosci`, `kategoria`, `gabaryt_produktu`, `zdjecie`) VALUES
+(1, 'Podstawka Chłodząca XYZ', 'Ergonomiczna podstawka chłodząca do laptopów z regulowaną wysokością.', '2024-01-11', '2024-01-11', '2024-03-21', 99.99, 1.23, 20, 'Dostepny', 4, 'maly', '\\pawww\\LAB12_SKLEP\\img\\podstawka.png'),
+(2, 'Zestaw Naklejek Dekoracyjnych', 'Zestaw kreatywnych naklejek do personalizacji laptopa.', '2024-01-11', '2024-01-11', NULL, 19.99, 1.23, 50, 'Dostepny', 4, 'maly', '\\pawww\\LAB12_SKLEP\\img\\naklejki.png'),
+(3, 'Laptop UltraBook Pro', 'Wysokowydajny laptop dla profesjonalistów, idealny do pracy i rozrywki.', '2024-01-11', '2024-01-11', NULL, 4599.99, 1.23, 10, 'Dostepny', 5, 'sredni', '\\pawww\\LAB12_SKLEP\\img\\laptop1.png'),
+(4, 'Laptop Gamingowy Monster', 'Laptop gamingowy z najnowszymi komponentami, zapewniający płynną rozgrywkę.', '2024-01-11', '2024-01-11', NULL, 4999.99, 1.23, 8, 'Dostepny', 5, 'sredni', '\\pawww\\LAB12_SKLEP\\img\\laptop3.png'),
+(5, 'Smartfon Galaxy X', 'Zaawansowany smartfon z dużym wyświetlaczem i wysokiej jakości aparatem.', '2024-01-11', '2024-01-11', NULL, 2999.99, 1.23, 15, 'Dostepny', 6, 'maly', '\\pawww\\LAB12_SKLEP\\img\\tel1.png'),
+(6, 'Smartfon Pixel Pro', 'Inteligentny smartfon z najnowszym systemem operacyjnym i innowacyjnymi funkcjami.', '2024-01-11', '2024-01-11', NULL, 2799.99, 1.23, 20, 'Dostepny', 6, 'maly', '\\pawww\\LAB12_SKLEP\\img\\tel2.png'),
+(7, 'Smartwatch HealthTrack', 'Smartwatch z funkcjami monitorowania zdrowia i aktywności fizycznej.', '2024-01-11', '2024-01-11', NULL, 799.99, 1.23, 30, 'Dostepny', 7, 'maly', '\\pawww\\LAB12_SKLEP\\img\\smartwatch.png'),
+(8, 'Elegant Watch Silver', 'Klasyczny zegarek z srebrnym wykończeniem, łączący styl i technologię.', '2024-01-11', '2024-01-11', NULL, 499.99, 1.23, 25, 'Dostepny', 7, 'maly', '\\pawww\\LAB12_SKLEP\\img\\rolex.png'),
+(9, 'Wiertarka Elektryczna PowerDrill', 'Wysokiej jakości wiertarka elektryczna do zadań domowych i profesjonalnych.', '2024-01-11', '2024-01-11', NULL, 349.99, 1.23, 12, 'Dostepny', 8, 'sredni', '\\pawww\\LAB12_SKLEP\\img\\ryobi.png'),
+(10, 'Zestaw Kluczy Uniwersalnych', 'Kompletny zestaw kluczy uniwersalnych do każdego warsztatu.', '2024-01-11', '2024-01-11', NULL, 199.99, 1.23, 20, 'Dostepny', 8, 'maly', '\\pawww\\LAB12_SKLEP\\img\\klucze.png'),
+(12, 'Zestaw Kluczy Imbusowych', 'Wielofunkcyjny zestaw kluczy imbusowych dla majsterkowiczów.', '2024-01-11', '2024-01-11', NULL, 59.99, 1.23, 40, 'Dostepny', 9, 'maly', '\\pawww\\LAB12_SKLEP\\img\\imbus.png'),
+(23, 'Klucz Francuski MaxGrip', 'Wytrzymały klucz francuski, idealny do prac hydraulicznych i mechanicznych.', '2024-01-11', '2024-01-11', NULL, 89.99, 1.23, 30, 'Dostepny', 9, 'maly', '\\pawww\\LAB12_SKLEP\\img\\francuz.png');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `uzytkownicy`
 --
 
@@ -70,10 +137,23 @@ INSERT INTO `uzytkownicy` (`id`, `login`, `haslo`) VALUES
 --
 
 --
+-- Indeksy dla tabeli `kategorie`
+--
+ALTER TABLE `kategorie`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `page_list`
 --
 ALTER TABLE `page_list`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `produkty`
+--
+ALTER TABLE `produkty`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_kategoria` (`kategoria`);
 
 --
 -- Indeksy dla tabeli `uzytkownicy`
@@ -92,10 +172,26 @@ ALTER TABLE `page_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `produkty`
+--
+ALTER TABLE `produkty`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT for table `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `produkty`
+--
+ALTER TABLE `produkty`
+  ADD CONSTRAINT `fk_kategoria` FOREIGN KEY (`kategoria`) REFERENCES `kategorie` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
