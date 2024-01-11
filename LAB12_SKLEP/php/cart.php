@@ -31,6 +31,12 @@ function usunZKoszyka($idProduktu) {
     }
 }
 
+function usun() {
+    if (isset($_SESSION['koszyk'])) {
+        unset($_SESSION['koszyk']);
+    }
+}
+
 function pokazKoszyk() {
     $total = 0;
     if (isset($_SESSION['koszyk']) && count($_SESSION['koszyk']) > 0) {
@@ -42,13 +48,15 @@ function pokazKoszyk() {
             echo "<button type='button' onclick='zmienIlosc(\"$idProduktu\", -1)'>-</button>";
             echo "<input type='number' name='ilosc[$idProduktu]' value='{$produkt['ilosc']}' min='1' id='ilosc_$idProduktu' data-cena='{$produkt['cena_brutto']}' onchange='updateTotal()'>";
             echo "<button type='button' onclick='zmienIlosc(\"$idProduktu\", 1)'>+</button>";
-            echo "<a href='removefromcart.php?id=$idProduktu'>Usuń</a>";
+            echo "<a href='removefromcart.php?id=$idProduktu'>Usuń</a>"; 
             echo " Cena: $subtotal zł</div>";
         }
         echo "<div>Razem: <span id='total'>$total</span> zł</div>";
-        echo "<button type='button' onclick='submitForm()'>Kup</button>";
+        echo "<button type='button' onclick='usunWszystko()'>KUP</button>"; 
+
         echo '</form>';
     } else {
         echo 'Koszyk jest pusty.';
     }
 }
+

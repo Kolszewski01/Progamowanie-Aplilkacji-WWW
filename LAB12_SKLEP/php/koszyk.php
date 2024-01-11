@@ -25,6 +25,13 @@
             }
             document.getElementById('total').textContent = total.toFixed(2) + ' zł';
         }
+
+        function usunWszystko() {
+    if (confirm("Dziekujemy za zakup na naszej stronie zapraszamy ponownie")) {
+        window.location.href = 'removeallfromcart.php';
+    }
+}
+
         
     </script>
 </head>
@@ -41,6 +48,7 @@
     session_start();
     include 'cart.php'; 
     pokazKoszyk();
+
     ?>
 </div>
 </body>
